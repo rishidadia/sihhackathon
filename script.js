@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.removeItem('pdf');
     }
 });
-function upload(event){
+function uploadAccomplishment(event){
     event.preventDefault();
     if(document.getElementById("accomplishmentUpload").checked){
         localStorage.setItem('username', 'Username'); 
@@ -37,12 +37,12 @@ function upload(event){
 
 //events
 document.addEventListener("DOMContentLoaded", function() {
-    const accomplishmentPage = document.getElementById("eventpage");
+    const eventpage = document.getElementById("eventpage");
     const username = localStorage.getItem('username');
     const title = localStorage.getItem('title');
     const description = localStorage.getItem('description');
     const date=localStorage.getItem('date');
-    const pdf=localStorage.getItem('fileupload')
+    const pdf=localStorage.getItem('fileupload');
     if (username && title && description) {
         const newDiv = document.createElement("div");
         newDiv.classList.add("new-div");
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.removeItem('pdf');
     }
 });
-function upload(event){
+function uploadEvent(event){
     event.preventDefault();
     if(document.getElementById("eventUpload").checked){
         localStorage.setItem('username', 'Username'); 
@@ -73,12 +73,12 @@ function upload(event){
 }
 //announcements
 document.addEventListener("DOMContentLoaded", function() {
-    const accomplishmentPage = document.getElementById("announcementpage");
+    const announcementpage = document.getElementById("announcementpage");
     const username = localStorage.getItem('username');
     const title = localStorage.getItem('title');
     const description = localStorage.getItem('description');
     const date=localStorage.getItem('date');
-    const pdf=localStorage.getItem('fileupload')
+    const pdf=localStorage.getItem('fileupload');
     if (username && title && description) {
         const newDiv = document.createElement("div");
         newDiv.classList.add("new-div");
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.removeItem('pdf');
     }
 });
-function upload(event){
+function uploadAnnouncement(event){
     event.preventDefault();
     if(document.getElementById("announcementUpload").checked){
         localStorage.setItem('username', 'Username'); 
