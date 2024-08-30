@@ -9,12 +9,12 @@ from login.models import User
 class RegisterForm(FlaskForm):
 
     def validate_username(self, username_to_check):
-        user = User.query.filter_by(username=username_to_check.data).first()
+        user = User.find_by_username(username=username_to_check.data)
         if user:
             raise ValidationError('Username already exists! Please try a different username')
 
     def validate_email_address(self, email_address_to_check):
-        email_address = User.query.filter_by(email_address=email_address_to_check.data).first()
+        email_address = User.find_by_email(email_address=email_address_to_check.data)
         if email_address:
             raise ValidationError('Email Address already exists! Please try a different email address.')
 

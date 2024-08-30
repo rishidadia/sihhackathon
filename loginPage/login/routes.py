@@ -1,12 +1,11 @@
 from flask import render_template, redirect, url_for, flash, request, session
 from flask_login import login_user, logout_user, login_required
-from login import app, mongo, bcrypt
+from login import app, bcrypt, db
 from login.models import User
 from login.forms import RegisterForm, LoginForm
 
 @app.route('/')
 @app.route('/home')
-@login_required
 def home_page():
     return render_template('home.html')
 
@@ -14,11 +13,11 @@ def home_page():
 def register_page():
     form = RegisterForm()
     if request.method == 'POST' and form.validate_on_submit():
-        existing_user = mongo.db.users.find_one({'username': form.username.data})
+        existing_user = db.users.find_one({'username': form.username.data})
         if existing_user is None:
             user = User(
                 username=form.username.data,
-                email_address=form.email.data,
+                email_address=form.email_address.data,
                 password_hash=bcrypt.generate_password_hash(form.password1.data).decode('utf-8')
             )
             user.save_to_db()
@@ -32,9 +31,9 @@ def register_page():
 @app.route('/login', methods=['GET', 'POST'])
 def login_page():
     form = LoginForm()
-    if request.method == 'POST' and form.validate_on_submit():
+    if form.validate_on_submit():
         user = User.find_by_username(form.username.data)
-        if user and bcrypt.check_password_hash(user.password_hash, form.password.data):
+        if user and user.check_password_correction(attempted_password=form.password.data):
             login_user(user)
             session['username'] = form.username.data
             flash('Login successful! You are now logged in.', category='success')
