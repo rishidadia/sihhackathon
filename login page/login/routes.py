@@ -1,51 +1,51 @@
-from login import app
 from flask import render_template, redirect, url_for, flash, request, session
-from login.models import Item, User
-from login.forms import RegisterForm, LoginForm
-from login import db
 from flask_login import login_user, logout_user, login_required
-import bcrypt
+from login import app, mongo, bcrypt
+from login.models import User
+from login.forms import RegisterForm, LoginForm
 
 @app.route('/')
 @app.route('/home')
+@login_required
 def home_page():
     return render_template('home.html')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register_page():
     form = RegisterForm()
-    if request.method=='POST' and form.validate_on_submit():
-        users = db.users
-        existing_user = users.find_one({'username': request.form['username']})
+    if request.method == 'POST' and form.validate_on_submit():
+        existing_user = mongo.db.users.find_one({'username': form.username.data})
         if existing_user is None:
-            hashpass = bcrypt.hashpw(request.form['password1'].encode('utf-8'), bcrypt.gensalt())
-            users.insert_one({'username':request.form['username'], 'password':hashpass})  
-            session['username'] = request.form['username']
+            user = User(
+                username=form.username.data,
+                email_address=form.email.data,
+                password_hash=bcrypt.generate_password_hash(form.password1.data).decode('utf-8')
+            )
+            user.save_to_db()
+            session['username'] = form.username.data
             flash('Account created successfully! You are now logged in as ' + session['username'], category='success')
-
             return redirect(url_for('home_page'))
-        if form.errors != {}:
-            for err_msg in form.errors.values():
-                flash(f'There was an error with creating a user: {err_msg}', category='danger')
-            
-        return render_template('register.html', form=form)
+        else:
+            flash('Username already exists. Please choose a different one.', category='danger')
+    return render_template('register.html', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login_page():
     form = LoginForm()
-    users = db.users
-    login_user = users.find_one({'username': request.form['username']})
-    if form.validate_on_submit() and login_user:
-        if bcrypt.hashpw(request.form['password'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
-            session['username'] = request.form['username']
-            flash('Account created successfully! You are now logged in as ' + session['username'], category='success')
+    if request.method == 'POST' and form.validate_on_submit():
+        user = User.find_by_username(form.username.data)
+        if user and bcrypt.check_password_hash(user.password_hash, form.password.data):
+            login_user(user)
+            session['username'] = form.username.data
+            flash('Login successful! You are now logged in.', category='success')
             return redirect(url_for('home_page'))
         else:
-            flash('Username and password are not a match! Please try again', category='danger')
+            flash('Invalid username or password. Please try again.', category='danger')
     return render_template('login.html', form=form)
 
 @app.route('/logout')
+@login_required
 def logout_page():
     logout_user()
     flash("You have been logged out!", category='info')
-    return redirect(url_for("home_page"))
+    return redirect(url_for('home_page'))
