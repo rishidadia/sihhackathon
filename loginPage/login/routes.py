@@ -23,7 +23,8 @@ def register_page():
             user.save_to_db()
             session['username'] = form.username.data
             flash('Account created successfully! You are now logged in as ' + session['username'], category='success')
-            return redirect(url_for('home_page'))
+            return render_template('home.html', form=form)
+            # return redirect(url_for('home_page'))
         else:
             flash('Username already exists. Please choose a different one.', category='danger')
     return render_template('register.html', form=form)
@@ -37,7 +38,8 @@ def login_page():
             login_user(user)
             session['username'] = form.username.data
             flash('Login successful! You are now logged in.', category='success')
-            return redirect(url_for('home_page'))
+            return render_template('home.html', form=form)
+            # return redirect(url_for('home_page'))
         else:
             flash('Invalid username or password. Please try again.', category='danger')
     return render_template('login.html', form=form)
