@@ -9,6 +9,10 @@ from login.forms import RegisterForm, LoginForm
 def home_page():
     return render_template('home.html')
 
+@app.route('/index')
+def index_page():
+    return render_template('index.html')
+
 @app.route('/register', methods=['GET', 'POST'])
 def register_page():
     form = RegisterForm()
@@ -23,7 +27,8 @@ def register_page():
             user.save_to_db()
             session['username'] = form.username.data
             flash('Account created successfully! You are now logged in as ' + session['username'], category='success')
-            return render_template('home.html', form=form)
+            return redirect(url_for('index_page'))
+            # return render_template('home.html', form=form)
             # return redirect(url_for('home_page'))
         else:
             flash('Username already exists. Please choose a different one.', category='danger')
@@ -38,7 +43,8 @@ def login_page():
             login_user(user)
             session['username'] = form.username.data
             flash('Login successful! You are now logged in.', category='success')
-            return render_template('home.html', form=form)
+            return redirect(url_for('index_page'))
+            # return render_template('home.html', form=form)
             # return redirect(url_for('home_page'))
         else:
             flash('Invalid username or password. Please try again.', category='danger')
