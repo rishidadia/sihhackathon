@@ -22,7 +22,8 @@ def register_page():
             user = User(
                 username=form.username.data,
                 email_address=form.email_address.data,
-                password_hash=bcrypt.generate_password_hash(form.password1.data).decode('utf-8')
+                password_hash=bcrypt.generate_password_hash(form.password1.data).decode('utf-8'),
+                role=form.role.data
             )
             user.save_to_db()
             session['username'] = form.username.data

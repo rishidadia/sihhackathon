@@ -2,7 +2,7 @@
 from collections.abc import Sequence
 from typing import Any, Mapping
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, SelectField
 from wtforms.validators import Length, EqualTo, Email, DataRequired, ValidationError
 from login.models import User
 
@@ -22,6 +22,7 @@ class RegisterForm(FlaskForm):
     email_address = StringField(label='Email Address:', validators=[Email(), DataRequired()])
     password1 = PasswordField(label='Password:', validators=[Length(min=6), DataRequired()])
     password2 = PasswordField(label='Confirm Password:', validators=[EqualTo('password1'), DataRequired()])
+    role = SelectField(label='Role:', choices=[('faculty', 'Faculty'), ('administration', 'Administration')])
     submit = SubmitField(label='Create Account')
 
 class LoginForm(FlaskForm):

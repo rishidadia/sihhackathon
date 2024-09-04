@@ -14,11 +14,13 @@ def load_user(user_id):
     return user
 
 class User(UserMixin):
-    def __init__(self, username, email_address, password_hash, _id=None):
+    def __init__(self, username, email_address, password_hash, role, _id=None):
         self.username = username
         self.email_address = email_address
         self.password_hash = password_hash
+        self.role = role
         self._id = _id if _id else ObjectId()
+        
 
     def get_id(self):
         return str(self._id)
@@ -59,7 +61,8 @@ class User(UserMixin):
             "_id": self._id,
             "username": self.username,
             "email_address": self.email_address,
-            "password_hash": self.password_hash
+            "password_hash": self.password_hash,
+            "role": self.role
         }
         # if self._id:
         #     db.users.update_one({"_id": self._id}, {"$set": user_data})

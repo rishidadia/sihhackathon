@@ -18,6 +18,13 @@ block content %}
       placeholder="Password") }} {{ form.password2.label() }} {{
       form.password2(class="form-control", placeholder="Confirm Password") }}
       <br />
+      <label>Choose : </label>
+      <!-- <select name="s1">
+        <option value="faculty" selected>Faculty</option>
+        <option value="administration" selected>Administration</option>
+      </select> -->
+      {{ form.role.label() }} {{ form.role(class="form-control",
+      placeholder="Select")}}
 
       <div class="checkbox mb-3">
         <h6>Already have an account?</h6>
