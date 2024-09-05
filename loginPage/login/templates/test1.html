@@ -68,39 +68,59 @@
     <script>
       // Function to add a new data box
       function addBox() {
-        const title = document.getElementById('boxTitle').value;
-        const description = document.getElementById('boxDescription').value;
-        const date=document.getElementById('date').value;
-        // Ensure both fields are filled
-        if (title && description) {
-          // Create a new div for the box
-          const newBox = document.createElement('div');
-          newBox.classList.add('data-box');
+  const title = document.getElementById('boxTitle').value;
+  const description = document.getElementById('boxDescription').value;
+  const date = document.getElementById('date').value;
+
+  if (title && description && date) {
+    const newBox = document.createElement('div');
+    newBox.classList.add('data-box');
   
-          // Set the content of the box
-          newBox.innerHTML = `
-            <h3>${title}</h3>
-            <h3>${date}</h3>
-            <p>${description.substring(0, 50)}...</p>
-            
-          `;
+    newBox.innerHTML = `
+      <h3>${title}</h3>
+      <h3>${date}</h3>
+      <p>${description.substring(0, 50)}...</p>
+    `;
+    
+    newBox.onclick = function () {
+      viewBox(title, description, date);
+    };
   
-          // Add click event to view box details
-          newBox.onclick = function () {
-            viewBox(title, description,date);
-          };
+    document.getElementById('boxContainer').appendChild(newBox);
   
-          // Append the new box to the container
-          document.getElementById('boxContainer').appendChild(newBox);
-  
-          // Clear the input fields
-          document.getElementById('boxTitle').value = '';
-          document.getElementById('boxDescription').value = '';
-          document.getElementById('date').value = '';
-        } else {
-          alert("Please enter both title and description.");
-        }
-      }
+    // Clear the input fields
+    document.getElementById('boxTitle').value = '';
+    document.getElementById('boxDescription').value = '';
+    document.getElementById('date').value = '';
+
+    // Prepare data for sending
+    const eventData = {
+      title: title,
+      description: description,
+      date: date
+    };
+
+    // Send data to the server  http://localhost:5000/api/saveEvent
+    fetch('http://127.0.0.1:5000/api/saveEvent', {  // Flask server is running on localhost:5000
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(eventData),  // Send the collected event data as JSON
+})
+.then(response => response.json())
+.then(data => {
+  console.log('Success:', data);
+})
+.catch((error) => {
+  console.error('Error:', error);
+});
+
+  } else {
+    alert("Please enter title, description, and date.");
+  }
+}
+
   
       // Function to view the box details in a modal
       function viewBox(title, description,date) {
