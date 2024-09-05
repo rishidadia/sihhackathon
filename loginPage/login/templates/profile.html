@@ -8,6 +8,20 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/demo.css')}}">
     <py-script src="python.py"></py-script>
     <script src= "script.js"></script>
+
+    <script>
+        /* Function to open the sidebar */
+  function openSidebar() {
+    document.getElementById("sidebar").style.width = "250px";
+    document.getElementById("main-content").style.marginLeft = "250px";
+  }
+
+  /* Function to close the sidebar */
+  function closeSidebar() {
+    document.getElementById("sidebar").style.width = "0";
+    document.getElementById("main-content").style.marginLeft = "0";
+  }
+      </script>
 </head>
 <body>
     <style>
