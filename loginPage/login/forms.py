@@ -29,3 +29,9 @@ class LoginForm(FlaskForm):
     username = StringField(label='User Name:', validators=[DataRequired()])
     password = PasswordField(label='Password:', validators=[DataRequired()])
     submit = SubmitField(label='Sign in')
+
+class AnnouncementsForm(FlaskForm):
+    title = StringField(label='Title:', validators=[DataRequired()])
+    date = StringField(label='Date:', validators=[DataRequired()])
+    description = StringField(label='Description:', validators=[DataRequired()])
+    submit = SubmitField(label='Submit')
