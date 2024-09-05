@@ -32,41 +32,6 @@
         document.getElementById("sidebar").style.width = "0";
         document.getElementById("main-content").style.marginLeft = "0";
       }
-      </script>
-</head>
-<body>
-    <div id="upload">
-        <a href="UploadEvents.html"><div id="uploadbtn"><i class="fa-solid fa-arrow-up-from-bracket"></i></div></a>
-    </div>
-    <div id="eventpage">
-    </div>
-    <h1>Events</h1>
-
-    <!-- Form to add new data -->
-    
-    <div class="data-form">
-      <input type="text" id="boxTitle" placeholder="Enter title">
-      <input type="text" id="boxDescription" placeholder="Enter description">
-      <input type="date" id="date" placeholder="Enter Date">
-      <button onclick="addBox()">Add Box</button>
-    </div>
-  
-    <!-- Container for boxes -->
-    <div class="box-container" id="boxContainer">
-      <!-- Dynamic boxes will be added here -->
-    </div>
-  
-    <!-- Modal to view detailed data -->
-    <div class="modal" id="dataModal">
-      <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <h3 class="modal-title" id="modalTitle"></h3>
-        <h3 class="modal-date" id="modalDate"></h3>
-        <p class="modal-description" id="modalDescription"></p>
-      </div>
-    </div>
-  
-    <script>
       // Function to add a new data box
       function addBox() {
         const title = document.getElementById('boxTitle').value;
@@ -119,7 +84,41 @@
       function closeModal() {
         document.getElementById('dataModal').style.display = 'none';
       }
-    </script>
+      </script>
+</head>
+<body>
+    <div id="upload">
+        <a href="UploadEvents.html"><div id="uploadbtn"><i class="fa-solid fa-arrow-up-from-bracket"></i></div></a>
+    </div>
+    <div id="eventpage">
+    </div>
+    <h1>Events</h1>
+
+    <!-- Form to add new data -->
+    
+    <div class="data-form">
+      <input type="text" id="boxTitle" placeholder="Enter title">
+      <input type="text" id="boxDescription" placeholder="Enter description">
+      <input type="date" id="date" placeholder="Enter Date">
+      <button onclick="addBox()">Add Box</button>
+    </div>
+  
+    <!-- Container for boxes -->
+    <div class="box-container" id="boxContainer">
+      <!-- Dynamic boxes will be added here -->
+    </div>
+  
+    <!-- Modal to view detailed data -->
+    <div class="modal" id="dataModal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h3 class="modal-title" id="modalTitle"></h3>
+        <h3 class="modal-date" id="modalDate"></h3>
+        <p class="modal-description" id="modalDescription"></p>
+      </div>
+    </div>
+  
+    
     
 </body>
 </html>
