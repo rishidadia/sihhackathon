@@ -8,11 +8,11 @@ app.use(cors()); // Enable CORS for cross-origin requests
 app.use(express.json()); // Parse JSON bodies
 
 // MongoDB connection string
-const uri = 'mongodb+srv://nshreshta2006:<eaqwXLsAwEfkJsq9>@cluster0.dkqju.mongodb.net/';
+const uri = 'mongodb+srv://nshreshta2006:eaqwXLsAwEfkJsq9@cluster0.dkqju.mongodb.net/';
 
 // Initialize MongoClient
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-console.log(client)
+
 (async () => {
   try {
     console.log("Connecting to MongoDB...");

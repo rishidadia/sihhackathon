@@ -1,5 +1,3 @@
-
-
 function uploadAccomplishment(event) {
   event.preventDefault(); // Prevents form from submitting
   const formEl = document.forms["uploadAccomplishmentForm"]; // Get the form element
@@ -38,13 +36,13 @@ function uploadEvent(event) {
   
     // Log the entire object
     console.log(data);
-    fetch("mongodb://localhost:27017/Members", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json", // Send data as JSON
-      },
-      body: JSON.stringify(data),
-    });
+    // fetch("mongodb://localhost:27017/Members", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json", // Send data as JSON
+    //   },
+    //   body: JSON.stringify(data),
+    // });
   }
   function uploadAnnouncement(event) {
     event.preventDefault(); // Prevent form submission
