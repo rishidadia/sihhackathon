@@ -13,4 +13,11 @@ function uploadAccomplishment(event) {
     
     // Log the entire object
     console.log(data);
-}
+    fetch('mongodb://localhost:27017/Members',{
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json'  // Send data as JSON
+        },
+        body: JSON.stringify(data)
+        })
+    }
