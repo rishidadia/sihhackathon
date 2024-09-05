@@ -59,7 +59,7 @@ function uploadAnnouncement(event) {
   
     // Log the entire object
     console.log(data);
-    fetch("mongodb://localhost:27017/Members", {
+    fetch("mongodb+srv://sohaajaykhare2006:sX3UUA9AmFZdkair@cluster0.e7d3t.mongodb.net/retryWrites=true&w=majority&appName=Cluster0", {
       method: "POST",
       headers: {
         "Content-Type": "application/json", // Send data as JSON
@@ -68,3 +68,18 @@ function uploadAnnouncement(event) {
     });
   }
   
+
+
+
+  
+  /* Function to open the sidebar */
+  function openSidebar() {
+    document.getElementById("sidebar").style.width = "250px";
+    document.getElementById("main-content").style.marginLeft = "250px";
+  }
+
+  /* Function to close the sidebar */
+  function closeSidebar() {
+    document.getElementById("sidebar").style.width = "0";
+    document.getElementById("main-content").style.marginLeft = "0";
+  }

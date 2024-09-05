@@ -3,21 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="demo.css">
     <script src="script.js"></script>
     <py-script src="python.py"></py-script>
-    <script src="https://kit.fontawesome.com/eb548ecb9b.js" crossorigin="anonymous"></script>
+    <script src= "script.js"></script>
 </head>
 <body>
     <div class="navbar">
-        <ul>
-            <li>Name of webapp along with logo</li>
-            <a href="index.html"><li><i class="fa-solid fa-house"></i>HOME</li></a>
-            <a href="announcements.html"><li><i class="fa-solid fa-bullhorn"></i>ANNOUNCEMENTS</li></a>
-            <a href="events.html"><li><i class="fa-solid fa-calendar"></i>EVENTS</li></a>
-            <a href="accomplishments.html"><li><a href="accomplishments.html"><i class="fa-solid fa-chart-line"></i>ACCOMPLISHMENTS</li></a>
-            <a href="profile.html"><li><i class="fa-solid fa-user"></i>MY PROFILE</li></a>
-        </ul>
+           <!-- Main content -->
+           <div id="main-content">
+            <span style="font-size:30px;cursor:pointer" onclick="openSidebar()">&#9776; Faculty LinkHub </span>
+        
+    
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
+            <a href="events.html">Events 1</a>
+            <a href="accomplishments.html">Accomplishments</a>
+            <a href="announcements.html">Announcements</a>
+            <a href="#section4">Section 4</a>
+          </div>
+</head>
     </div>
     <div id="upload">
         <a href="upload.html"><div id="uploadbtn"><i class="fa-solid fa-arrow-up-from-bracket"></i></div></a>
