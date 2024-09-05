@@ -21,7 +21,7 @@
           </div>
 
           <script>
-            function submit() {
+            function submit(section) {
    
               const title = document.getElementById("boxTitle").value;
         const description = document.getElementById("boxDescription").value;
@@ -44,9 +44,9 @@
         document.getElementById("date").value = '';
 
         // Reload boxes
-        loadBoxes();
+        loadBoxes(section);
       }
-
+      
       function addBox(title, description, date) {
         // Create a new div for the box
         const newBox = document.createElement('div');
@@ -82,7 +82,7 @@
         document.getElementById('dataModal').style.display = 'none';
       }
 
-      function loadBoxes() {
+      function loadBoxes(section) {
         const boxContainer = document.getElementById('boxContainer');
         boxContainer.innerHTML = ''; // Clear the container
 
@@ -100,7 +100,7 @@
 
       // Load boxes when the page loads
       window.onload = function () {
-        loadBoxes();
+        loadBoxes('events');
       };
       function openSidebar() {
         document.getElementById("sidebar").style.width = "250px";
@@ -128,7 +128,7 @@
       <input type="text" id="boxTitle" placeholder="Enter title">
       <input type="text" id="boxDescription" placeholder="Enter description">
       <input type="date" id="date" placeholder="Enter Date">
-      <button onclick="submit(),addBox()">Add Box</button>
+      <button onclick="submit('events'),addBox()">Add Box</button>
     </div>
   
     <!-- Container for boxes -->

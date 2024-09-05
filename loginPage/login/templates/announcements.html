@@ -21,7 +21,7 @@
         </div>
 
         <script>
-          function submit() {
+          function submit(section) {
    
    const title = document.getElementById("boxTitle").value;
 const description = document.getElementById("boxDescription").value;
@@ -44,28 +44,27 @@ document.getElementById("boxDescription").value = '';
 document.getElementById("date").value = '';
 
 // Reload boxes
-loadBoxes();
-}
-
+loadBoxes(section);
+          }
 function addBox(title, description, date) {
 // Create a new div for the box
-const newBox = document.createElement('div');
-newBox.classList.add('data-box');
+const new_Box = document.createElement('div');
+new_Box.classList.add('data-box');
 
 // Set the content of the box
-newBox.innerHTML = `
+new_Box.innerHTML = `
 <h3>${title}</h3>
 <h3>${date}</h3>
 <p>${description.substring(0, 50)}</p>
 `;
 
 // Add click event to view box details
-newBox.onclick = function () {
+new_Box.onclick = function () {
 viewBox(title, description, date);
 };
 
 // Append the new box to the container
-document.getElementById('boxContainer').appendChild(newBox);
+document.getElementById('boxContainer').appendChild(new_Box);
 }
 
 function viewBox(title, description, date) {
@@ -82,7 +81,7 @@ function closeModal() {
 document.getElementById('dataModal').style.display = 'none';
 }
 
-function loadBoxes() {
+function loadBoxes(section) {
 const boxContainer = document.getElementById('boxContainer');
 boxContainer.innerHTML = ''; // Clear the container
 
@@ -100,7 +99,7 @@ if (key.startsWith('box-')) {
 
 // Load boxes when the page loads
 window.onload = function () {
-loadBoxes();
+loadBoxes('announcements');
 };
 function openSidebar() {
 document.getElementById("sidebar").style.width = "250px";
@@ -112,7 +111,8 @@ function closeSidebar() {
 document.getElementById("sidebar").style.width = "0";
 document.getElementById("main-content").style.marginLeft = "0";
 }
-        </script>
+
+</script>
 </head>
 <body>
 <style>
@@ -248,7 +248,7 @@ document.getElementById("main-content").style.marginLeft = "0";
     <input type="text" id="boxTitle" placeholder="Enter title">
     <input type="text" id="boxDescription" placeholder="Enter description">
     <input type="date" id="date" placeholder="Enter Date">
-    <button onclick="submit(),addBox()">Add Box</button>
+    <button onclick="submit('announcements'),addBox()">Add Box</button>
   </div>
 
   <!-- Container for boxes -->
