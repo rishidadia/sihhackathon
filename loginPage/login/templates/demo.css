@@ -1,0 +1,67 @@
+
+    /* Basic styling for body */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    /* Styling the sidebar */
+    #sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+
+    #sidebar a {
+      padding: 10px 15px;
+      text-decoration: none;
+      font-size: 25px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+
+    #sidebar a:hover {
+      background-color: #575757;
+    }
+
+    /* Sidebar close button */
+    #sidebar .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+    }
+
+    /* Styling the main content */
+    #main-content {
+      margin-left: 0;
+      transition: margin-left 0.5s;
+      padding: 20px;
+      flex: 1;
+    }
+
+    /* Styling for sections */
+    .section {
+        color: #ddd;
+      padding: 50px;
+      margin: 20px 0;
+      background-color: #111;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+    }
+
+    /* Media query for responsive design */
+    @media screen and (max-height: 450px) {
+      #sidebar { padding-top: 15px; }
+      #sidebar a { font-size: 18px; }
+    }
