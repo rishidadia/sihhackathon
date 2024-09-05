@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <script src="script.js"></script>
   <link rel="stylesheet" href="demo.css">
 
   <title>Onclick Sidebar with 4 Sections</title>
@@ -16,17 +16,17 @@
     <!-- Sidebar -->
     <div id="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
-        <a href="events.html">Events 1</a>
-        <a href="accomplishments.html">Accomplishments</a>
+        <a href="events.html">Events</a>
+        <a href="demoAccomplishments.html">Accomplishments</a>
         <a href="announcements.html">Announcements</a>
-        <a href="#section4">Section 4</a>
+        <a href="profile.html">Section 4</a>
       </div>
 
 </head>
 <body>
     <!-- Section 1 -->
     <div id="Announcemens" class="section">
-      <a href="announcements.html"><h2>Announcemens</h2></a>
+      <a href="Announcements.html"><h2>Announcemens</h2></a>
       <p>This is the content of section 1.</p>
     </div>
 
@@ -48,20 +48,6 @@
       <p>This is the content of section 4.</p>
     </div>
   </div>
-
-  <script>
-    /* Function to open the sidebar */
-    function openSidebar() {
-      document.getElementById("sidebar").style.width = "250px";
-      document.getElementById("main-content").style.marginLeft = "250px";
-    }
-
-    /* Function to close the sidebar */
-    function closeSidebar() {
-      document.getElementById("sidebar").style.width = "0";
-      document.getElementById("main-content").style.marginLeft = "0";
-    }
-  </script>
 
 </body>
 </html>
