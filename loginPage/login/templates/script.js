@@ -68,3 +68,18 @@ function uploadAnnouncement(event) {
     });
   }
   
+
+
+
+  
+  /* Function to open the sidebar */
+  function openSidebar() {
+    document.getElementById("sidebar").style.width = "250px";
+    document.getElementById("main-content").style.marginLeft = "250px";
+  }
+
+  /* Function to close the sidebar */
+  function closeSidebar() {
+    document.getElementById("sidebar").style.width = "0";
+    document.getElementById("main-content").style.marginLeft = "0";
+  }
