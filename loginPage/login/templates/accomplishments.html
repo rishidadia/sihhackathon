@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="demo.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/demo.css') }}"
+    />
     <script src="script.js" defer></script>
     <py-script src="python.py"></py-script>
-    <script src="https://kit.fontawesome.com/eb548ecb9b.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    
+    <script
+      src="https://kit.fontawesome.com/eb548ecb9b.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
     <div id="upload">
-        <a href="UploadAccomplishments.html"><div id="uploadbtn"><i class="fa-solid fa-arrow-up-from-bracket"></i></div></a>
+      <a href="UploadAccomplishments.html"
+        ><div id="uploadbtn">
+          <i class="fa-solid fa-arrow-up-from-bracket"></i></div
+      ></a>
     </div>
-    <div id="accomplishmentpage">
-        
-    </div>
-</body>
+    <div id="accomplishmentpage"></div>
+  </body>
 </html>
