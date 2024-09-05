@@ -74,7 +74,7 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
 # Create Flask app instance
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 app.config['SECRET_KEY'] = '2ab28c0f6afeb78a44be0807'  # Set your Flask secret key
 
 # Initialize Bcrypt and LoginManager with the Flask app
