@@ -4,7 +4,14 @@ content %}
   <div class="container">
     <form method="POST" class="form-signin" style="color: white">
       {{ form.hidden_tag() }}
-      <img src="logo.jpg" alt="invalid" height="200" width="200" />
+      <br /><br />
+      <img
+        src="{{ url_for('static', filename='logo-no-background.png') }}"
+        alt="invalid"
+        width="200"
+        height="200"
+      />
+      <br /><br />
       <h1 class="h3 mb-3 font-weight-normal">Please Login</h1>
       <br />
       {{ form.username.label() }} {{ form.username(class="form-control",
