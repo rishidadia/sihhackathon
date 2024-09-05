@@ -65,3 +65,12 @@
       #sidebar { padding-top: 15px; }
       #sidebar a { font-size: 18px; }
     }
+
+
+    form{
+      margin: 20px;
+      padding: 20px;
+      background-color: #111;
+      color: #ffffff;
+
+    }
