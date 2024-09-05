@@ -70,4 +70,19 @@ class User(UserMixin):
         result = db.users.insert_one(user_data)
         self._id = result.inserted_id
 
+class Announcement(UserMixin):
+    def __init__(self, title, date, description, _id=None):
+        self.title = title
+        self.date = date
+        self.description = description
+        self._id = _id if _id else ObjectId()
+
+    def save_to_db(self):
+        user_data = {
+            "_id": self._id,
+            "title": self.title,
+            "date": self.date,
+            "description": self.description
+        }
+
 
