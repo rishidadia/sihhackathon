@@ -1,64 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style1.css">
-    <script src="script.js"></script>
-    <py-script src="python.py"></py-script>
-    <script src="https://kit.fontawesome.com/eb548ecb9b.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/demo.css')}}">
+
+  <title>Onclick Sidebar with 4 Sections</title>
+
+    <!-- Main content -->
+    <div id="main-content">
+        <span style="font-size:30px;cursor:pointer" onclick="openSidebar()">&#9776; Faculty LinkHub </span>
+    
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
+        <a href="{{ url_for('events_page')}}"">Events</a>
+        <a href="{{ url_for('accomplishments_page')}}">Accomplishments</a>
+        <a href="{{ url_for('announcements_page')}}">Announcements</a>
+        <a href="{{ url_for('profile_page')}}">Profile</a>
+      </div>
+
 </head>
 <body>
-    <div class="navbar">
-        <ul>
-            <li>
-                <img src="loginPage/images/png/logo-no-background.png" alt="">
-            </li>
-            <a href="index.html"><li><i class="fa-solid fa-house"></i>HOME</li></a>
-            <a href="announcements.html"><li><i class="fa-solid fa-bullhorn"></i>ANNOUNCEMENTS</li></a>
-            <a href="events.html"><li><i class="fa-solid fa-calendar"></i>EVENTS</li></a>
-            <a href="accomplishments.html"><li><a href="accomplishments.html"><i class="fa-solid fa-chart-line"></i>ACCOMPLISHMENTS</li></a>
-            <a href="profile.html"><li><i class="fa-solid fa-user"></i>MY PROFILE</li></a>
-        </ul>
-    </div>
-    <div id="upload">
-        <a href="upload.html"><div id="uploadbtn"><i class="fa-solid fa-arrow-up-from-bracket"></i></div></a>
-    </div>
-    <div id="welcome">
-        <p>(pic of the person if they upload)WELCOME, (username)-</p>
-        <p>Either missed notifications or space for some added feature</p>
-    </div>
-    
-    <div id="Upcoming">
-        <h1>UPCOMING-</h1><!--(this will have things sorted by date-->
-        <div id="upcoming"></div>
-        <div id="upcoming"></div>
-        <div id="upcoming"></div>
-        <div id="upcoming"></div>
-    </div>
-    <div id="homeAnnouncements">
-        <h1><br>ANNOUNCEMENTS-</h1><!--(this will have either the announcements pinned by the management or the most recent ones if none are added)*/-->
-        <div id="homeAnnouncement"></div>
-        <div id="homeAnnouncement"></div>
-        <div id="homeAnnouncement"></div>
-        <div id="homeAnnouncement"></div>
-    </div>
-    <div id="homeEvents"><!--(this will have either the events pinned by the management or the most recent ones if none are added)*/-->
-        <h1><br><br>EVENTS-</h1>
-        <div id="homeEvent"></div>
-        <div id="homeEvent"></div>
-        <div id="homeEvent"></div>
-        <div id="homeEvent"></div>
-    </div>
-    <div id="homeAccomplishments"><!--(this will have either the achievments pinned by the management or the most recent ones if none are added)*/-->
-        <h1><br><br>ACCOMPLISHMENTS-</h1>
-        <div id="homeAccomplishment"></div>
-        <div id="homeAccomplishment"></div>
-        <div id="homeAccomplishment"></div>
-        <div id="homeAccomplishment"></div>
+    <!-- Section 1 -->
+    <div id="Events" class="section">
+        <a href="{{ url_for('events_page')}}"><h2>Events</h2></a>
+        <p>This is the content of section 2.</p>
+      </div>
+
+    <!-- Section 2 -->
+    <div id="Announcemens" class="section">
+        <a href="{{ url_for('announcements_page')}}"><h2>Announcemens</h2></a>
+        <p>This is the content of section 1.</p>
+      </div>
+
+    <!-- Section 3 -->
+    <div id="Acomplishments" class="section">
+      <a href="{{ url_for('accomplishments_page')}}"><h2>Acomplishments</h2></a>
+      <p>This is the content of section 3.</p>
     </div>
 
+    <!-- Section 4 -->
+    <div id="profile" class="section">
+      <a href="{{ url_for('profile_page')}}"><h2>Profile</h2></a>
+      <p>This is the content of section 4.</p>
+    </div>
+  </div>
 
 </body>
 </html>

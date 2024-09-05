@@ -13,6 +13,22 @@ def home_page():
 def index_page():
     return render_template('index.html')
 
+@app.route('/announcements')
+def announcements_page():
+    return render_template('announcements.html')
+
+@app.route('/events')
+def events_page():
+    return render_template('events.html')
+
+@app.route('/accomplishments')
+def accomplishments_page():
+    return render_template('accomplishments.html')
+
+@app.route('/profile')
+def profile_page():
+    return render_template('profile.html')
+
 @app.route('/register', methods=['GET', 'POST'])
 def register_page():
     form = RegisterForm()
