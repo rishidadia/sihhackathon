@@ -1,3 +1,5 @@
+
+
 function uploadAccomplishment(event) {
   event.preventDefault(); // Prevents form from submitting
   const formEl = document.forms["uploadAccomplishmentForm"]; // Get the form element
@@ -44,27 +46,29 @@ function uploadEvent(event) {
       body: JSON.stringify(data),
     });
   }
-function uploadAnnouncement(event) {
-    event.preventDefault(); // Prevents form from submitting
+  function uploadAnnouncement(event) {
+    event.preventDefault(); // Prevent form submission
+  
     const formEl = document.forms["uploadAnnouncementForm"]; // Get the form element
     const formData = new FormData(formEl); // Create FormData object
   
-    // Log all form data values for debugging
-    for (let [key, value] of formData.entries()) {
-      console.log(`${key}: ${value}`);
-    }
-  
     // Convert FormData to an object using fromEntries
     const data = Object.fromEntries(formData.entries());
-  
-    // Log the entire object
     console.log(data);
-    fetch("mongodb+srv://sohaajaykhare2006:sX3UUA9AmFZdkair@cluster0.e7d3t.mongodb.net/retryWrites=true&w=majority&appName=Cluster0", {
+    // Send the data to your backend API using fetch
+    fetch("http://localhost:5000/upload-announcement", { // Replace with your API endpoint
       method: "POST",
       headers: {
-        "Content-Type": "application/json", // Send data as JSON
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(data), // Send the data as JSON
+    })
+    .then(response => response.json())
+    .then(result => {
+      console.log('Success:', result);
+    })
+    .catch(error => {
+      console.error('Error:', error);
     });
   }
   
