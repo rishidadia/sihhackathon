@@ -136,3 +136,7 @@ button {
 button:hover {
   background-color: #45a049;
 }
+#homeTitle {
+  font-size: 55px;
+  color: white;
+}
