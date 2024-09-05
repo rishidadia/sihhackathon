@@ -61,8 +61,8 @@ body {
 /* Styling for sections */
 .section {
   color: #ddd;
-  padding: 50px;
-  margin: 20px 0;
+  padding: 10px;
+  margin: 15px 0;
   background-color: #111;
   border: 1px solid #ddd;
   border-radius: 20px;
@@ -145,11 +145,13 @@ button {
 button:hover {
   background-color: #45a049;
 }
-
 #homeTitle {
-  font-size: 35px;
+  font-size: 55px;
   color: white;
 }
+
+
+
   </style>
 
   <title>Onclick Sidebar with 4 Sections</title>
@@ -184,20 +186,20 @@ button:hover {
 </head>
 <body>
     <!-- Section 1 -->
-    <div id="Events" class="section">
-        <a href="{{ url_for('events_page')}}"><h2 id="homeTitle">Events</h2></a>
-        <p>*Most recent events*.</p>
+    <div id="prof1" class="section">
+        <a href="{{ url_for('prof1')}}"><h2 id="homeTitle">prof1</h2></a>
+        <p>Department of xyz</p>
       </div>
 
     <!-- Section 2 -->
-    <div id="Announcemens" class="section">
-        <a href="{{ url_for('announcements_page')}}"><h2 id="homeTitle">Announcements</h2></a>
+    <div id="prof2" class="section">
+        <a href="{{ url_for('prof2')}}"><h2 id="homeTitle">prof2</h2></a>
         <p>*Most recent announcements*.</p>
       </div>
 
     <!-- Section 3 -->
-    <div id="Acomplishments" class="section">
-      <a href="{{ url_for('accomplishments_page')}}"><h2 id="homeTitle">Accomplishments</h2></a>
+    <div id="prof3" class="section">
+      <a href="{{ url_for('pro3')}}"><h2 id="homeTitle">prof3</h2></a>
       <p>*Most recent accomplishments*.</p>
     </div>
 
