@@ -26,25 +26,25 @@
 <body>
     <!-- Section 1 -->
     <div id="Events" class="section">
-        <a href="events.html"><h2>Events</h2></a>
+        <a href="{{ url_for('events_page')}}"><h2>Events</h2></a>
         <p>This is the content of section 2.</p>
       </div>
 
     <!-- Section 2 -->
     <div id="Announcemens" class="section">
-        <a href="announcements.html"><h2>Announcemens</h2></a>
+        <a href="{{ url_for('announcements_page')}}"><h2>Announcemens</h2></a>
         <p>This is the content of section 1.</p>
       </div>
 
     <!-- Section 3 -->
     <div id="Acomplishments" class="section">
-      <a href="accomplishments.html"><h2>Acomplishments</h2></a>
+      <a href="{{ url_for('accomplishments_page')}}"><h2>Acomplishments</h2></a>
       <p>This is the content of section 3.</p>
     </div>
 
     <!-- Section 4 -->
     <div id="profile" class="section">
-      <a href="profile.html"><h2>Profile</h2></a>
+      <a href="{{ url_for('profile_page')}}"><h2>Profile</h2></a>
       <p>This is the content of section 4.</p>
     </div>
   </div>
