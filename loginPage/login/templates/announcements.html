@@ -4,18 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="demo.css">
-    <script src="script.js"></script>
     <py-script src="python.py"></py-script>
     <script src="script.js"></script>
+        <!-- Main content -->
+        <div id="main-content">
+            <span style="font-size:30px;cursor:pointer" onclick="openSidebar()">&#9776; Faculty LinkHub </span>
+        
+    
+        <!-- Sidebar -->
+        <div id="sidebar" >
+            <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
+            <a href="events.html">Events 1</a>
+            <a href="accomplishments.html">Accomplishments</a>
+            <a href="announcements.html">Announcements</a>
+            <a href="#section4">Section 4</a>
+          </div>
 </head>
 <body>
-    
+    <link rel="stylesheet" href="test.css">
     <div id="upload">
-        <a href="uploadAnnouncements.html"><div id="uploadbtn"><i class="fa-solid fa-arrow-up-from-bracket"></i></div></a>
+        <a href="UploadEvents.html"><div id="uploadbtn"><i class="fa-solid fa-arrow-up-from-bracket"></i></div></a>
     </div>
-    <div id="announcementpage">
-        
+    <div id="eventpage">
     </div>
-    
+    <h1>Data Boxes Dashboard</h1>
+
+    <!-- Form to add new data -->
+    <div class="data-form">
+      <input type="text" id="boxTitle" placeholder="Enter title">
+      <input type="text" id="boxDescription" placeholder="Enter description">
+      <button onclick="addBox()">Add Box</button>
+    </div>
+  
+    <!-- Container for boxes -->
+    <div class="box-container" id="boxContainer">
+      <!-- Dynamic boxes will be added here -->
+    </div>
+  
+    <!-- Modal to view detailed data -->
+    <div class="modal" id="dataModal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h3 class="modal-title" id="modalTitle"></h3>
+        <p class="modal-description" id="modalDescription"></p>
+      </div>
+    </div>
+  
+    <script>
+      // Function to add a new data box
+      function addBox() {
+        const title = document.getElementById('boxTitle').value;
+        const description = document.getElementById('boxDescription').value;
+  
+        // Ensure both fields are filled
+        if (title && description) {
+          // Create a new div for the box
+          const newBox = document.createElement('div');
+          newBox.classList.add('data-box');
+  
+          // Set the content of the box
+          newBox.innerHTML = `
+            <h3>${title}</h3>
+            <p>${description.substring(0, 50)}...</p>
+          `;
+  
+          // Add click event to view box details
+          newBox.onclick = function () {
+            viewBox(title, description);
+          };
+  
+          // Append the new box to the container
+          document.getElementById('boxContainer').appendChild(newBox);
+  
+          // Clear the input fields
+          document.getElementById('boxTitle').value = '';
+          document.getElementById('boxDescription').value = '';
+        } else {
+          alert("Please enter both title and description.");
+        }
+      }
+  
+      // Function to view the box details in a modal
+      function viewBox(title, description) {
+        // Display the modal
+        document.getElementById('dataModal').style.display = 'flex';
+  
+        // Populate modal with the data
+        document.getElementById('modalTitle').innerText = title;
+        document.getElementById('modalDescription').innerText = description;
+      }
+  
+      // Function to close the modal
+      function closeModal() {
+        document.getElementById('dataModal').style.display = 'none';
+      }
+    </script>
+
 </body>
 </html>
+
+
+
+
