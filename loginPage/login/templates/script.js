@@ -59,7 +59,7 @@ function uploadAnnouncement(event) {
   
     // Log the entire object
     console.log(data);
-    fetch("mongodb://localhost:27017/Members", {
+    fetch("mongodb+srv://sohaajaykhare2006:sX3UUA9AmFZdkair@cluster0.e7d3t.mongodb.net/retryWrites=true&w=majority&appName=Cluster0", {
       method: "POST",
       headers: {
         "Content-Type": "application/json", // Send data as JSON
