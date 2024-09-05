@@ -1,5 +1,16 @@
-function uploadAccomplishment(event){
-    const formE1=document.querySelector('.uploadAccomplishmentForm');
-    const formData=new FormData(formE1);
-    console.log(formData.get('titleText'));
+function uploadAccomplishment(event) {
+    event.preventDefault();  // Prevents form from submitting
+    const formEl = document.forms['uploadAccomplishmentForm'];  // Get the form element
+    const formData = new FormData(formEl);  // Create FormData object
+
+    // Log all form data values for debugging
+    for (let [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+    }
+
+    // Convert FormData to an object using fromEntries
+    const data = Object.fromEntries(formData.entries());
+    
+    // Log the entire object
+    console.log(data);
 }
