@@ -63,7 +63,7 @@
       margin-right: 10px;
       border: 1px solid #ddd;
       border-radius: 4px;
-      width: 200px;
+      width: 350px;
     }
 
     .data-form button {
@@ -161,12 +161,13 @@
     </div>
     <div id="eventpage">
     </div>
-    <h1>Data Boxes Dashboard</h1>
+    <h1>Announcements</h1>
 
     <!-- Form to add new data -->
     <div class="data-form">
       <input type="text" id="boxTitle" placeholder="Enter title">
       <input type="text" id="boxDescription" placeholder="Enter description">
+      <input type="date" id="date" placeholder="Enter Date">
       <button onclick="addBox()">Add Box</button>
     </div>
   
@@ -180,6 +181,7 @@
       <div class="modal-content">
         <span class="close-btn" onclick="closeModal()">&times;</span>
         <h3 class="modal-title" id="modalTitle"></h3>
+        <h3 class="modal-date" id="modalDate"></h3>
         <p class="modal-description" id="modalDescription"></p>
       </div>
     </div>
@@ -189,7 +191,7 @@
       function addBox() {
         const title = document.getElementById('boxTitle').value;
         const description = document.getElementById('boxDescription').value;
-  
+        const date=document.getElementById('date').value;
         // Ensure both fields are filled
         if (title && description) {
           // Create a new div for the box
@@ -199,12 +201,14 @@
           // Set the content of the box
           newBox.innerHTML = `
             <h3>${title}</h3>
+            <h3>${date}</h3>
             <p>${description.substring(0, 50)}...</p>
+            
           `;
   
           // Add click event to view box details
           newBox.onclick = function () {
-            viewBox(title, description);
+            viewBox(title, description,date);
           };
   
           // Append the new box to the container
@@ -213,19 +217,22 @@
           // Clear the input fields
           document.getElementById('boxTitle').value = '';
           document.getElementById('boxDescription').value = '';
+          document.getElementById('date').value = '';
         } else {
           alert("Please enter both title and description.");
         }
       }
   
       // Function to view the box details in a modal
-      function viewBox(title, description) {
+      function viewBox(title, description,date) {
         // Display the modal
         document.getElementById('dataModal').style.display = 'flex';
   
         // Populate modal with the data
         document.getElementById('modalTitle').innerText = title;
         document.getElementById('modalDescription').innerText = description;
+        document.getElementById('modalDate').innerText = date;
+        
       }
   
       // Function to close the modal
