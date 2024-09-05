@@ -39,21 +39,21 @@ class User(UserMixin):
     def find_by_id(user_id):
         user_data = db.users.find_one({"_id": ObjectId(user_id)})
         if user_data:
-            return User(username=user_data['username'], email_address=user_data['email_address'], password_hash=user_data['password_hash'], _id=user_data['_id'])
+            return User(username=user_data['username'], email_address=user_data['email_address'], password_hash=user_data['password_hash'], role=user_data['role'], _id=user_data['_id'])
         return None
 
     @staticmethod
     def find_by_username(username):
         user_data = db.users.find_one({"username": username})
         if user_data:
-            return User(username=user_data['username'], email_address=user_data['email_address'], password_hash=user_data['password_hash'], _id=user_data['_id'])
+            return User(username=user_data['username'], email_address=user_data['email_address'], password_hash=user_data['password_hash'], role=user_data['role'], _id=user_data['_id'])
         return None
         
     @staticmethod
     def find_by_email(email_address):
         user_data = db.users.find_one({"email_address": email_address})
         if user_data:
-            return User(username=user_data['username'], email_address=user_data['email_address'], password_hash=user_data['password_hash'], _id=user_data['_id'])
+            return User(username=user_data['username'], email_address=user_data['email_address'], password_hash=user_data['password_hash'], role=user_data['role'], _id=user_data['_id'])
         return None
     
     def save_to_db(self):
