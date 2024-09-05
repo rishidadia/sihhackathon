@@ -1,5 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/demo.css') }}"
+    />
+    <script src="script.js"></script>
+    <py-script src="python.py"></py-script>
+    <script
+      src="https://kit.fontawesome.com/eb548ecb9b.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="navbar">
+      <ul>
+        <li>Name of webapp along with logo</li>
+        <a href="{{ url_for('index_page')}}"
+          ><li><i class="fa-solid fa-house"></i>HOME</li></a
+        >
+        <a href="{{ url_for('announcements_page')}}"
+          ><li><i class="fa-solid fa-bullhorn"></i>ANNOUNCEMENTS</li></a
+        >
+        <a href="{{ url_for('events_page')}}"
+          ><li><i class="fa-solid fa-calendar"></i>EVENTS</li></a
+        >
+        <a href="{{ url_for('accomplishments_page')}}"
+          ><li><i class="fa-solid fa-chart-line"></i>ACCOMPLISHMENTS</li></a
+        >
+        <a href="{{ url_for('profile_page')}}"
+          ><li><i class="fa-solid fa-user"></i>MY PROFILE</li></a
+        >
+      </ul>
+    </div>
+=======
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +58,7 @@
           </div>
 </head>
 <body>
+<<<<<<< HEAD
     <link rel="stylesheet" href="test.css">
     <div id="upload">
         <a href="UploadEvents.html"><div id="uploadbtn"><i class="fa-solid fa-arrow-up-from-bracket"></i></div></a>
@@ -106,3 +144,16 @@
 
 
 
+=======
+    
+>>>>>>> 176a95c4c16b31736cc32f2d18343e92bf296721
+    <div id="upload">
+      <a href="upload.html"
+        ><div id="uploadbtn">
+          <i class="fa-solid fa-arrow-up-from-bracket"></i></div
+      ></a>
+    </div>
+    <div id="announcementpage"></div>
+  </body>
+</html>
+>>>>>>> refs/remotes/origin/main
