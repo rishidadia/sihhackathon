@@ -23,10 +23,58 @@
             <a href="announcements.html">Announcements</a>
             <a href="#section4">Section 4</a>
           </div>
-</head>
     </div>
     <div id="upload">
         <a href="upload.html"><div id="uploadbtn"><i class="fa-solid fa-arrow-up-from-bracket"></i></div></a>
     </div>
+
+    <div class="container">
+        <h2>Faculty Profile</h2>
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="profile-pic">Profile Picture</label>
+                <input type="file" id="profile-pic" name="profile-pic">
+            </div>
+
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="department">Department</label>
+                <input type="text" id="department" name="department" placeholder="Enter your department" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="office-number">Office Number</label>
+                <input type="text" id="office-number" name="office-number" placeholder="Enter your office number"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="qualifications">Qualifications</label>
+                <input type="text" id="qualifications" name="qualifications" placeholder="Enter your qualifications"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="bio">Bio</label>
+                <textarea id="bio" name="bio" placeholder="Tell us about yourself" rows="4" required></textarea>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
 </body>
 </html>
