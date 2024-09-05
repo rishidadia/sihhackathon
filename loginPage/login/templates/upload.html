@@ -15,11 +15,11 @@
     <div class="navbar">
         <ul>
             <li>Name of webapp along with logo</li>
-            <a href="index.html"><li><i class="fa-solid fa-house"></i>HOME</li></a>
-            <a href="announcements.html"><li><i class="fa-solid fa-bullhorn"></i>ANNOUNCEMENTS</li></a>
-            <a href="events.html"><li><i class="fa-solid fa-calendar"></i>EVENTS</li></a>
-            <a href="accomplishments.html"><li><a href="accomplishments.html"><i class="fa-solid fa-chart-line"></i>ACCOMPLISHMENTS</li></a>
-            <a href="profile.html"><li><i class="fa-solid fa-user"></i>MY PROFILE</li></a>
+            <a href="{{ url_for('index_page')}}"><li><i class="fa-solid fa-house"></i>HOME</li></a>
+            <a href="{{ url_for('announcements_page')}}"><li><i class="fa-solid fa-bullhorn"></i>ANNOUNCEMENTS</li></a>
+            <a href="{{ url_for('events_page')}}"><li><i class="fa-solid fa-calendar"></i>EVENTS</li></a>
+            <a href="{{ url_for('accomplishments_page')}}"><li><a href="accomplishments.html"><i class="fa-solid fa-chart-line"></i>ACCOMPLISHMENTS</li></a>
+            <a href="{{ url_for('profile_page')}}"><li><i class="fa-solid fa-user"></i>MY PROFILE</li></a>
         </ul>
     </div>
     <div id="usernameUpload">

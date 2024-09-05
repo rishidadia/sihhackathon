@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="script.js"></script>
-  <link rel="stylesheet" href="demo.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/demo.css')}}">
 
   <title>Onclick Sidebar with 4 Sections</title>
 
@@ -16,10 +16,10 @@
     <!-- Sidebar -->
     <div id="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
-        <a href="events.html">Events</a>
-        <a href="accomplishments.html">Accomplishments</a>
-        <a href="announcements.html">Announcements</a>
-        <a href="profile.html">Profile</a>
+        <a href="{{ url_for('events_page')}}"">Events</a>
+        <a href="{{ url_for('accomplishments_page')}}">Accomplishments</a>
+        <a href="{{ url_for('announcements_page')}}">Announcements</a>
+        <a href="{{ url_for('profile_page')}}">Profile</a>
       </div>
 
 </head>
