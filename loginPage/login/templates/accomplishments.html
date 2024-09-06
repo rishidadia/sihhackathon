@@ -21,6 +21,67 @@
           </div>
 
           <script>
+             
+             function submit(section) {
+   
+   const title = document.getElementById("boxTitle").value;
+const description = document.getElementById("boxDescription").value;
+const date = document.getElementById("date").value;
+
+if (!title || !description || !date) {
+alert("Please fill out all fields.");
+return;
+}
+
+// Create a unique key for each box
+const key = `box-${Date.now()}`;
+
+// Store form data in localStorage
+localStorage.setItem(key, JSON.stringify({ title, description, date }));
+
+// Clear the input fields
+document.getElementById("boxTitle").value = '';
+document.getElementById("boxDescription").value = '';
+document.getElementById("date").value = '';
+
+// Reload boxes
+loadBoxes(section); 
+          }
+          function addBox() {
+        const title = document.getElementById('boxTitle').value;
+        const description = document.getElementById('boxDescription').value;
+        const date=document.getElementById('date').value;
+        // Ensure both fields are filled
+        if (title && description) {
+          // Create a new div for the box
+          const newBox = document.createElement('div');
+          newBox.classList.add('data-box');
+  
+          // Set the content of the box
+          newBox.innerHTML = `
+            <h3>${title}</h3>
+            <h3>${date}</h3>
+            <p>${description.substring(0, 50)}</p>
+            
+          `;
+  
+          // Add click event to view box details
+          newBox.onclick = function () {
+            viewBox(title, description,date);
+          };
+  
+          // Append the new box to the container
+          document.getElementById('boxContainer').appendChild(newBox);
+  
+          // Clear the input fields
+          document.getElementById('boxTitle').value = '';
+          document.getElementById('boxDescription').value = '';
+          document.getElementById('date').value = '';
+        } else {
+          alert("Please enter both title and description.");
+        }
+      } 
+     
             /* Function to open the sidebar */
       function openSidebar() {
         document.getElementById("sidebar").style.width = "250px";
@@ -32,6 +93,28 @@
         document.getElementById("sidebar").style.width = "0";
         document.getElementById("main-content").style.marginLeft = "0";
       }
+      
+  
+      // Function to view the box details in a modal
+      function viewBox(title, description,date) {
+        // Display the modal
+        document.getElementById('dataModal').style.display = 'flex';
+  
+        // Populate modal with the data
+        document.getElementById('modalTitle').innerText = title;
+        document.getElementById('modalDescription').innerText = description;
+        document.getElementById('modalDate').innerText = date;
+        
+      }
+  
+      // Function to close the modal
+      function closeModal() {
+        document.getElementById('dataModal').style.display = 'none';
+      }
+      
+      window.onload = function () {
+      loadBoxes('accomplishments');
+      };  
           </script>
 </head>
 <body>
@@ -168,7 +251,7 @@
       <input type="text" id="boxTitle" placeholder="Enter title">
       <input type="text" id="boxDescription" placeholder="Enter description">
       <input type="date" id="date" placeholder="Enter Date">
-      <button onclick="addBox()">Add Box</button>
+      <button onclick="submit('accomplishments'),addBox()">Add Box</button>
     </div>
   
     <!-- Container for boxes -->
@@ -185,61 +268,7 @@
         <p class="modal-description" id="modalDescription"></p>
       </div>
     </div>
-  
-    <script>
-      // Function to add a new data box
-      function addBox() {
-        const title = document.getElementById('boxTitle').value;
-        const description = document.getElementById('boxDescription').value;
-        const date=document.getElementById('date').value;
-        // Ensure both fields are filled
-        if (title && description) {
-          // Create a new div for the box
-          const newBox = document.createElement('div');
-          newBox.classList.add('data-box');
-  
-          // Set the content of the box
-          newBox.innerHTML = `
-            <h3>${title}</h3>
-            <h3>${date}</h3>
-            <p>${description.substring(0, 50)}...</p>
-            
-          `;
-  
-          // Add click event to view box details
-          newBox.onclick = function () {
-            viewBox(title, description,date);
-          };
-  
-          // Append the new box to the container
-          document.getElementById('boxContainer').appendChild(newBox);
-  
-          // Clear the input fields
-          document.getElementById('boxTitle').value = '';
-          document.getElementById('boxDescription').value = '';
-          document.getElementById('date').value = '';
-        } else {
-          alert("Please enter both title and description.");
-        }
-      }
-  
-      // Function to view the box details in a modal
-      function viewBox(title, description,date) {
-        // Display the modal
-        document.getElementById('dataModal').style.display = 'flex';
-  
-        // Populate modal with the data
-        document.getElementById('modalTitle').innerText = title;
-        document.getElementById('modalDescription').innerText = description;
-        document.getElementById('modalDate').innerText = date;
-        
-      }
-  
-      // Function to close the modal
-      function closeModal() {
-        document.getElementById('dataModal').style.display = 'none';
-      }
-    </script>
+
 
 </body>
 </html>
