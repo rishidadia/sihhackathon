@@ -145,92 +145,104 @@
           </div>
 
           <script>
-            function submit(section) {
+             function submit(section) {
    
-              const title = document.getElementById("boxTitle").value;
-        const description = document.getElementById("boxDescription").value;
-        const date = document.getElementById("date").value;
+   const title = document.getElementById("boxTitle").value;
+const description = document.getElementById("boxDescription").value;
+const date = document.getElementById("date").value;
 
-        if (!title || !description || !date) {
-          alert("Please fill out all fields.");
-          return;
-        }
+if (!title || !description || !date) {
+alert("Please fill out all fields.");
+return;
+}
 
-        // Create a unique key for each box
-        const key = `box-${Date.now()}`;
+// Create a unique key for each box
+const key = `box-${Date.now()}`;
 
-        // Store form data in localStorage
-        localStorage.setItem(key, JSON.stringify({ title, description, date }));
+// Store form data in localStorage
+localStorage.setItem(key, JSON.stringify({ title, description, date }));
 
-        // Clear the input fields
-        document.getElementById("boxTitle").value = '';
-        document.getElementById("boxDescription").value = '';
-        document.getElementById("date").value = '';
+// Clear the input fields
+document.getElementById("boxTitle").value = '';
+document.getElementById("boxDescription").value = '';
+document.getElementById("date").value = '';
 
-        // Reload boxes
-        loadBoxes(section);
-      }
-      
-      function addBox(title, description, date) {
-        // Create a new div for the box
-        const newBox = document.createElement('div');
-        newBox.classList.add('data-box');
+// Reload boxes
+loadBoxes(section);
+}
 
-        // Set the content of the box
-        newBox.innerHTML = `
-          <h3>${title}</h3>
-          <h3>${date}</h3>
-          <p>${description.substring(0, 50)}</p>
-        `;
+function addBox(title, description, date) {
+// Create a new div for the box
+const newBox = document.createElement('div');
+newBox.classList.add('data-box');
 
-        // Add click event to view box details
-        newBox.onclick = function () {
-          viewBox(title, description, date);
-        };
+// Set the content of the box
+newBox.innerHTML = `
+<h3>${title}</h3>
+<h3>${date}</h3>
+<p>${description.substring(0, 50)}</p>
+`;
 
-        // Append the new box to the container
-        document.getElementById('boxContainer').appendChild(newBox);
-      }
+// Add click event to view box details
+newBox.onclick = function () {
+viewBox(title, description, date);
+};
 
-      function viewBox(title, description, date) {
-        // Display the modal
-        document.getElementById('dataModal').style.display = 'flex';
+// Append the new box to the container
+document.getElementById('boxContainer').appendChild(newBox);
+}
 
-        // Populate modal with the data
-        document.getElementById('modalTitle').innerText = title;
-        document.getElementById('modalDescription').innerText = description;
-        document.getElementById('modalDate').innerText = date;
-      }
+function viewBox(title, description, date) {
+// Display the modal
+document.getElementById('dataModal').style.display = 'flex';
 
-      function closeModal() {
-        document.getElementById('dataModal').style.display = 'none';
-      }
+// Populate modal with the data
+document.getElementById('modalTitle').innerText = title;
+document.getElementById('modalDescription').innerText = description;
+document.getElementById('modalDate').innerText = date;
+}
 
-      function loadBoxes(section) {
-        const boxContainer = document.getElementById('boxContainer');
-        boxContainer.innerHTML = ''; // Clear the container
+function closeModal() {
+document.getElementById('dataModal').style.display = 'none';
+}
 
-        // Loop through all items in localStorage
-        for (let i = 0; i < localStorage.length; i++) {
-          const key = localStorage.key(i);
+function loadBoxes(section) {
+const boxContainer = document.getElementById('boxContainer');
+boxContainer.innerHTML = ''; // Clear the container
 
-          // Only process keys starting with 'box-'
-          if (key.startsWith('box-')) {
-            const data = JSON.parse(localStorage.getItem(key));
-            addBox(data.title, data.description, data.date);
-          }
-        }
-      }
+// Create an array to store the boxes
+const boxes = [];
 
-      // Load boxes when the page loads
-      window.onload = function () {
-        loadBoxes('events');
-      };
-      function openSidebar() {
-        document.getElementById("sidebar").style.width = "250px";
-        document.getElementById("main-content").style.marginLeft = "250px";
-      }
-    
+// Loop through all items in localStorage
+for (let i = 0; i < localStorage.length; i++) {
+const key = localStorage.key(i);
+
+// Only process keys starting with 'box-'
+if (key.startsWith('box-')) {
+ const data = JSON.parse(localStorage.getItem(key));
+ boxes.push(data);
+}
+}
+
+// Sort the boxes by date (latest first)
+boxes.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+// Add the boxes to the container in sorted order
+boxes.forEach(data => {
+addBox(data.title, data.description, data.date);
+});
+}
+
+
+// Load boxes when the page loads
+window.onload = function () {
+loadBoxes('events');
+};
+function openSidebar() {
+document.getElementById("sidebar").style.width = "250px";
+document.getElementById("main-content").style.marginLeft = "250px";
+}
+
       /* Function to close the sidebar */
       function closeSidebar() {
         document.getElementById("sidebar").style.width = "0";
@@ -278,7 +290,7 @@
     <!-- Modal to view detailed data -->
     <div class="modal" id="dataModal">
       <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <span class="close-btn" onclick="submit(event),closeModal()">&times;</span>
         <h3 class="modal-title" id="modalTitle"></h3>
         <h3 class="modal-date" id="modalDate"></h3>
         <p class="modal-description" id="modalDescription"></p>
