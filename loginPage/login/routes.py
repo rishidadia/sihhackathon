@@ -29,6 +29,10 @@ def accomplishments_page():
 def profile_page():
     return render_template('profile.html')
 
+@app.route('/members')
+def members_page():
+    return render_template('members.html')
+
 @app.route('/register', methods=['GET', 'POST'])
 def register_page():
     form = RegisterForm()
