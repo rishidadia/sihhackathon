@@ -141,6 +141,7 @@
             <a href="{{ url_for('accomplishments_page')}}">Accomplishments</a>
             <a href="{{ url_for('announcements_page')}}">Announcements</a>
             <a href="{{ url_for('profile_page')}}">Profile</a>
+            <a href="{{ url_for('members_html')}}">Members</a>
           </div>
 
           <script>
@@ -206,32 +207,20 @@
       }
 
       function loadBoxes(section) {
-    const boxContainer = document.getElementById('boxContainer');
-    boxContainer.innerHTML = ''; // Clear the container
+        const boxContainer = document.getElementById('boxContainer');
+        boxContainer.innerHTML = ''; // Clear the container
 
-    // Create an array to store the boxes
-    const boxes = [];
+        // Loop through all items in localStorage
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
 
-    // Loop through all items in localStorage
-    for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-
-        // Only process keys starting with 'box-'
-        if (key.startsWith('box-')) {
+          // Only process keys starting with 'box-'
+          if (key.startsWith('box-')) {
             const data = JSON.parse(localStorage.getItem(key));
-            boxes.push(data);
+            addBox(data.title, data.description, data.date);
+          }
         }
-    }
-
-    // Sort the boxes by date (latest first)
-    boxes.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    // Add the boxes to the container in sorted order
-    boxes.forEach(data => {
-        addBox(data.title, data.description, data.date);
-    });
-}
-
+      }
 
       // Load boxes when the page loads
       window.onload = function () {
@@ -247,6 +236,21 @@
         document.getElementById("sidebar").style.width = "0";
         document.getElementById("main-content").style.marginLeft = "0";
       }
+      function viewBox(title, description,date) {
+        // Display the modal
+        document.getElementById('dataModal').style.display = 'flex';
+  
+        // Populate modal with the data
+        document.getElementById('modalTitle').innerText = title;
+        document.getElementById('modalDescription').innerText = description;
+        document.getElementById('modalDate').innerText = date;
+        
+      }
+  
+      // Function to close the modal
+      function closeModal() {
+        document.getElementById('dataModal').style.display = 'none';
+      }
     </script>
 </head>
 <body>
@@ -255,7 +259,7 @@
     </div>
     <div id="eventpage">
     </div>
-    <h1>Acomplishments</h1>
+    <h1>Accomplishments</h1>
 
     <!-- Form to add new data -->
     
@@ -281,8 +285,61 @@
       </div>
     </div>
   
-    
-    
+    <script>
+      // Function to add a new data box
+      function addBox() {
+        const title = document.getElementById('boxTitle').value;
+        const description = document.getElementById('boxDescription').value;
+        const date=document.getElementById('date').value;
+        // Ensure both fields are filled
+        if (title && description) {
+          // Create a new div for the box
+          const newBox = document.createElement('div');
+          newBox.classList.add('data-box');
+  
+          // Set the content of the box
+          newBox.innerHTML = `
+            <h3>${title}</h3>
+            <h3>${date}</h3>
+            <p>${description.substring(0, 50)}...</p>
+            
+          `;
+  
+          // Add click event to view box details
+          newBox.onclick = function () {
+            viewBox(title, description,date);
+          };
+  
+          // Append the new box to the container
+          document.getElementById('boxContainer').appendChild(newBox);
+  
+          // Clear the input fields
+          document.getElementById('boxTitle').value = '';
+          document.getElementById('boxDescription').value = '';
+          document.getElementById('date').value = '';
+        } else {
+          alert("Please enter both title and description.");
+        }
+      }
+  
+      // Function to view the box details in a modal
+      function viewBox(title, description,date) {
+        // Display the modal
+        document.getElementById('dataModal').style.display = 'flex';
+  
+        // Populate modal with the data
+        document.getElementById('modalTitle').innerText = title;
+        document.getElementById('modalDescription').innerText = description;
+        document.getElementById('modalDate').innerText = date;
+        
+      }
+  
+      // Function to close the modal
+      function closeModal() {
+        document.getElementById('dataModal').style.display = 'none';
+      }
+    </script>
+
 </body>
 </html>
 
